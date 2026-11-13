@@ -1,0 +1,84 @@
+#include <stdio.h>
+
+int main() {
+    char s[200];
+    int i, g = 0, p = 0;
+
+    printf(«Enter sentence: «);
+    fgets(s, 200, stdin);
+
+    for (i = 0; s[i] != ‚\0‘; i++) {
+        char c = s[i];
+        if (c >= "A" && c <= "Z") c = c + 32;
+        if (c == "a"  c == ‚"e"  c == "i"  c == "o"  c == "u" || c == "y")
+            g++;
+        else if (c >= "a" && c <= "z")
+            p++;
+    }
+
+    printf(«Vowels: %d\n», g);
+    printf(«Consonants: %d\n», p);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+
+int main() {
+    int i = 1, sum = 0;
+    int nomer = 5;
+
+    while (i <= 100) {
+        if (i == nomer || i == 33) {
+            i++;
+            continue;
+        }
+        sum = sum + i;
+        i++;
+    }
+
+    printf("Sum = %d\n", sum);
+    return 0;
+}
+
+
+
+
+
+
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    float x, sum = 0, min, max;
+
+    do {
+        printf("Enter N (7-12): ");
+        scanf("%d", &n);
+    } while (n < 7 || n > 12);
+
+    for (i = 1; i <= n; i++) {
+        printf("Number %d: ", i);
+        scanf("%f", &x);
+        sum = sum + x;
+        if (i == 1) {
+            min = x;
+            max = x;
+        }
+        if (x < min) min = x;
+        if (x > max) max = x;
+    }
+
+    printf("Sum = %.2f\n", sum);
+    printf("Average = %.2f\n", sum / n);
+    printf("Min = %.2f\n", min);
+    printf("Max = %.2f\n", max);
+    return 0;
+}

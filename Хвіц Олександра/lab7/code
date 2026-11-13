@@ -1,0 +1,76 @@
+#include <stdio.h>
+
+int isPrime(int n) {
+    int i;
+    for (i = 2; i < n; i++) // пробуємо ділити на 2, 3, 4
+        if (n % i == 0) return 0; // поділилось без остачі → не просте
+    return n > 1; // не поділилось ні на що → просте (і більше 1)
+}
+
+int main(void) {
+    int num;
+    printf("число: ");
+    scanf("%d", &num);
+    if (isPrime(num))
+        printf("просте\n");
+    else
+        printf("не просте\n");
+    return 0;
+}
+
+
+
+
+
+
+
+#include <stdio.h>
+
+int sumRec(int n) {
+    if (n > 100) return 0;
+    return n + sumRec(n + 1);
+}
+
+int main(void) {
+    int N;
+    printf("введіть номер в журналі: ");
+    scanf("%d", &N);
+    printf("сума від  %d do 100 = %d\n", N, sumRec(N));
+    return 0;
+}
+
+
+
+
+
+
+
+#include <stdio.h>
+
+double half(int N, int A) {
+    double a = -100, b = 100, c;
+    while (b - a > 0.001) {
+        c = (a + b) / 2;
+        if ((N * a + A) * (N * c + A) <= 0)
+            b = c;
+        else
+            a = c;
+    }
+    return (a + b) / 2;
+}
+
+int main(void) {
+    int N, A;
+    printf("введіть номер в журналі: ");
+    scanf("%d", &N);
+    printf("введіть вік: ");
+    scanf("%d", &A);
+    printf("x = %lf\n", half(N, A));
+    return 0;
+}
+
+
+
+
+
+
