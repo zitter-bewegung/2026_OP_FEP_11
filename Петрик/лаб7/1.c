@@ -1,31 +1,26 @@
 #include <stdio.h>
-//#include <stdbool.h>
 int myFunction(int n) {
 	int i = 2;
-
 	if (n==2){
-printf("Просте\n");
-}
+		printf("Просте\n");
+	}
 	int a[n];
 	do{
-if (n==2)continue;
-
+		if (n==2)continue;
 		if(n%i==0){
-	printf("Складене\n");
-break;
-}	
-	else{
-printf("Просте\n");
-break;
-}
-
+			printf("Складене\n");
+			break;
+		}	
+		else{
+			printf("Просте\n");
+			break;
+		}
 	}
-while(i<n);
-}
-
+	while(i<n);
+	}
 int main() {
-int n=0;
-	printf("Введіть число (за значення 2 отримуємо значення СкладенеПросте):");
+	int n=0;
+	printf("Введіть число:");
 	scanf("%d",&n);
 	myFunction(n);
 	return 0;
