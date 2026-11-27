@@ -1,0 +1,84 @@
+лаб 9
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char s[200];
+    char *w;
+
+    printf("Введіть прислів'я:\n");
+    fgets(s, sizeof(s), stdin);
+
+    w = strtok(s, " \n");
+    while (w != NULL) {
+        for (int i = strlen(w) - 1; i >= 0; i--)
+            putchar(w[i]);
+        putchar('\n');
+        w = strtok(NULL, " \n");
+    }
+    return 0;
+}
+
+
+
+завд 2
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    int num[10], i, j, t, distinct = 0, len = 0;
+    char sur[10][30], name[10][30], buf[30];
+
+    for (i = 0; i < 10; i++) {
+        scanf("%d %29s %29s", &num[i], sur[i], name[i]);
+        len += strlen(sur[i]);
+    }
+
+    for (i = 0; i < 10; i++) {
+        for (j = 0; j < i; j++)
+            if (strcmp(name[i], name[j]) == 0)
+                break;
+        if (j == i)
+            distinct++;
+    }
+    printf("Distinct names: %d\n", distinct);
+    printf("Average surname length: %.2f\n", (float)len / 10);
+
+    for (i = 0; i < 9; i++)
+        for (j = 0; j < 9 - i; j++)
+            if (strcmp(sur[j], sur[j + 1]) > 0) {
+                strcpy(buf, sur[j]);   strcpy(sur[j], sur[j + 1]);   strcpy(sur[j + 1], buf);
+                strcpy(buf, name[j]);  strcpy(name[j], name[j + 1]); strcpy(name[j + 1], buf);
+                t = num[j]; num[j] = num[j + 1]; num[j + 1] = t;
+            }
+
+    printf("\nSorted list:\n");
+    for (i = 0; i < 10; i++)
+        printf("%d %s %s\n", num[i], name[i], sur[i]);
+    return 0;
+}
+
+
+
+завд 3 
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char e[100];
+    char *at, *dot;
+
+    printf("Введіть адресу пошти:\n");
+    scanf("%s", e);
+
+    at = strchr(e, '@');
+    dot = strrchr(e, '.');
+
+    if (at != NULL && dot != NULL && dot > at && strlen(dot) >= 3)
+        printf("Правильна адреса\n");
+    else
+        printf("Неправильна адреса\n");
+    return 0;
+}
